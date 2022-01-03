@@ -4,6 +4,7 @@ Base settings to build other settings files upon.
 from pathlib import Path
 
 import environ
+import os
 
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 # estagio/
@@ -42,7 +43,15 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    "default": env.db("DATABASE_URL", default="postgres://localhost/estagio"),
+#    "default": env.db("DATABASE_URL", default="postgres://localhost/estagio"),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'estagio',
+        'USER': 'os.environ["postgresuser"]',
+        'PASSWORD': 'os.environ["postgrespassword"]',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 # https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-DEFAULT_AUTO_FIELD
@@ -77,8 +86,9 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    "estagio.users",
     # Your stuff: custom apps go here
+    "estagio.users.apps.UsersConfig",
+    "estagio.main.apps.MainConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
