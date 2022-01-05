@@ -1,6 +1,6 @@
 {% load static i18n %}<!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}
-<html lang="{{ LANGUAGE_CODE }}">
+<html lang="pt-br">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -90,7 +90,7 @@
       {% endif %}
 
       {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
+        <!-- <p>Use this document as a way to quick start any new project.</p> -->
       {% endblock content %}
 
     </div> <!-- /container -->
@@ -107,4 +107,16 @@
     {% endcomment %}
     {% endblock inline_javascript %}
   </body>
+
+  <footer class="py-4 bg-primary text-white-50">
+    <div class="container text-center">
+        <small>
+            Contate
+            <a class="text-light" href="https://github.com/muriloalpeixoto">
+                Murilo Alfonso Peixoto
+            </a>
+        </small>
+    </div>
+</footer>
+
 </html>

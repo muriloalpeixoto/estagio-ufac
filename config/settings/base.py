@@ -24,9 +24,10 @@ DEBUG = env.bool("DJANGO_DEBUG", False)
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # though not all of them may be available with every OS.
 # In Windows, this must be set to your system time zone.
-TIME_ZONE = "UTC-5"
+TIME_ZONE = "America/Lima"
 # https://docs.djangoproject.com/en/dev/ref/settings/#language-code
-LANGUAGE_CODE = "en-us"
+# LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "pt-BR"
 # https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
 # https://docs.djangoproject.com/en/dev/ref/settings/#use-i18n
@@ -42,15 +43,21 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 DATABASES = {
 #    "default": env.db("DATABASE_URL", default="postgres://localhost/estagio"),
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'estagio',
-        'USER': 'os.environ["postgresuser"]',
-        'PASSWORD': 'os.environ["postgrespassword"]',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        #'NAME': 'estagio',
+        #'USER': 'os.environ["postgresuser"]',
+        #'USER': "postgres",
+        #'PASSWORD': 'os.environ["postgrespassword"]',
+        #'PASSWORD': "p#aK8iAmttFnv6po7bmb",
+        #'HOST': 'localhost',
+        #'PORT': '5432',
     }
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
@@ -202,7 +209,7 @@ FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
 # http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 # FIXTURES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#fixture-dirs
@@ -222,10 +229,13 @@ X_FRAME_OPTIONS = "DENY"
 # EMAIL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
-EMAIL_BACKEND = env(
-    "DJANGO_EMAIL_BACKEND",
-    default="django.core.mail.backends.smtp.EmailBackend",
-)
+#EMAIL_BACKEND = env(
+#    "DJANGO_EMAIL_BACKEND",
+#    default="django.core.mail.backends.smtp.EmailBackend",
+#)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_EMAIL_VERIFICATION = "none"
+
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-timeout
 EMAIL_TIMEOUT = 5
 
