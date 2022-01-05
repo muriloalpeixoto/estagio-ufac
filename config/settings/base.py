@@ -53,9 +53,7 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.postgresql_psycopg2',
         #'NAME': 'estagio',
         #'USER': 'os.environ["postgresuser"]',
-        #'USER': "postgres",
         #'PASSWORD': 'os.environ["postgrespassword"]',
-        #'PASSWORD': "p#aK8iAmttFnv6po7bmb",
         #'HOST': 'localhost',
         #'PORT': '5432',
     }
