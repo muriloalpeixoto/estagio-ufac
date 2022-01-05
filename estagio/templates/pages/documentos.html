@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Documentos do Estágio</h2>
+    <form action="">
+        <label for="nome_est">Nome do estagiário</label><br>
+        <input type="text" id="nome_est" name="nome_est"><br>
+        <br>
+
+        <label for="nome_esc">Nome da escola</label><br>
+        <input type="text" id="nome_esc" name="nome_esc"><br>
+        <br>
+
+        <h5>Caracterização da Escola</h5>
+        <input type="file" id="caracterizacao_esc" name="caracterizacao_esc">
+        <br><br>
+
+        <h5>Cronograma de Atividades na Escola</h5>
+        <input type="file" id="cronograma_esc" name="cronograma_esc">
+        <br><br>
+        
+        <h5>Encaminhamentos de Estágio Curricular</h5>
+        <input type="file" id="encaminhamentos_esc" name="encaminhamentos_esc">
+        <br><br>
+        
+<!--
+        <h5>Relação de Alunos Estagiários</h5>
+        <input type="file" id="relacao_esc" name="relacao_esc">
+-->
+        <h5>Plano de Ensino de Estágio</h5>
+        <input type="file" id="plano_esc" name="plano_esc">
+        <br><br>
+        
+        <h5>Ficha de Controle de Estágio</h5>
+        <input type="file" id="ficha_esc" name="ficha_esc">
+        <br><br>
+        
+        <h5>Relatório de Estágio</h5>
+        <input type="file" id="relatorio_esc" name="relatorio_esc">
+        <br><br>
+        
+        <h5>Avaliação de Estágio</h5>
+        <input type="file" id="avaliacao_esc" name="avaliacao_esc">
+        <br><br>
+        
+        <input type="submit">
+   </form> 
+{% endblock content %}

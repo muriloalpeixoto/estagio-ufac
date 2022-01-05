@@ -47,15 +47,24 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home' %}">Home <span class="visually-hidden">(current)</span></a>
+                <a class="nav-link" href="{% url 'home' %}">Principal <span class="visually-hidden">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">About</a>
+                <a class="nav-link" href="{% url 'about' %}">Sobre</a>
               </li>
               {% if request.user.is_authenticated %}
                 <li class="nav-item">
                   {# URL provided by django-allauth/account/urls.py #}
-                  <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% translate "My Profile" %}</a>
+                  <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">Meu perfil</a>
+                  <!-- {% translate "My Profile" %} -->
+                </li>
+                <li class="nav-item">
+                  {# URL provided by django-allauth/account/urls.py #}
+                  <a class="nav-link" href="{% url 'cadastro_escola' %}">Cadastro de Escolas</a>
+                </li>
+                <li class="nav-item">
+                  {# URL provided by django-allauth/account/urls.py #}
+                  <a class="nav-link" href="{% url 'documentos' %}">Documentos</a>
                 </li>
                 <li class="nav-item">
                   {# URL provided by django-allauth/account/urls.py #}
@@ -107,11 +116,13 @@
     {% endcomment %}
     {% endblock inline_javascript %}
   </body>
+  
+  <br>
 
   <footer class="py-4 bg-primary text-white-50">
     <div class="container text-center">
         <small>
-            Contate
+            Dúvidas? Contate
             <a class="text-light" href="https://github.com/muriloalpeixoto">
                 Murilo Alfonso Peixoto
             </a>

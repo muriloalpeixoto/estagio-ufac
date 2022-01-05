@@ -16,9 +16,9 @@ from estagio.main.views import (
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
-    path(
-        "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
-    ),
+    path("about/", TemplateView.as_view(template_name="pages/about.html"), name="about"),
+    path("cadastro_escola/", TemplateView.as_view(template_name="pages/cadastro_escola.html"), name="cadastro_escola"),
+    path("documentos/", TemplateView.as_view(template_name="pages/documentos.html"), name="documentos"),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management

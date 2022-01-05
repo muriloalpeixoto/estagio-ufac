@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Cadastro de Escola</h2>
+    <form>
+        <label for="nome_esc">Nome da escola</label><br>
+        <input type="text" id="nome_esc" name="nome_esc"><br>
+        <br>
+
+        <p>Nível da escola</p>
+        <input type="checkbox" id="infantil" name="nivel_esc" value="infantil">
+        <label for="infantil">Educação Infantil</label><br>
+        <input type="checkbox" id="fundamental_i" name="nivel_esc" value="fundamental_i">
+        <label for="fundamental_i">Ensino Fundamental I</label><br>
+        <input type="checkbox" id="fundamental_ii" name="nivel_esc" value="fundamental_ii">
+        <label for="fundamental_ii">Ensino Fundamental II</label><br>
+        <input type="checkbox" id="medio" name="nivel_esc" value="medio">
+        <label for="medio">Ensino Médio</label><br>
+        <input type="checkbox" id="superior" name="nivel_esc" value="superior">
+        <label for="superior">Ensino Superior</label><br>
+        <br>
+
+        <p>Tipo de escola</p>
+        <input type="radio" id="privada" name="tipo_esc" value="privada">
+        <label for="privada">Privada</label><br>
+        <input type="radio" id="publica" name="tipo_esc" value="publica">
+        <label for="publica">Pública</label><br>
+        <br>
+
+        <input type="submit" class="submit-button" name="save" method="post", value="Enviar">
+   </form> 
+{% endblock content %}
