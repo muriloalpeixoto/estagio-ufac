@@ -11,6 +11,8 @@ from django.views.generic import TemplateView
 
 # Create your views here.
 
+from .forms import UploadFileForm
+
 from estagio.main.models import (
     Post,
     Category,
@@ -19,6 +21,24 @@ from estagio.main.models import (
 )
 
 from estagio.main.forms import ContactForm
+
+def cadastro_escola(request):
+    if request.method == "POST":
+        nome_esc = request.POST['nome_esc'];
+        nivel_esc = request.POST['nivel_esc'];
+        tipo_esc = request.POST['tipo_esc'];
+        print("Escola registrada")
+    return render(request, "cadastro_escola.html")
+
+def documentos(request):
+    if request.method == "POST":
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            handle_uploaded_file(request.FILES['file'])
+            return HttpResponseRedirect('/success/url/')
+    else:
+        form = UploadFileForm()
+    return render(request, 'documentos.html', {'form': form})
 
 class ProjectListView(ListView):
     model = Project

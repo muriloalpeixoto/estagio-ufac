@@ -3,6 +3,9 @@ from django.utils.translation import ugettext_lazy as _
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Field
 
+class UploadFileForm(forms.Form):
+    file = forms.FileField(label='Selecione um arquivo',
+    help_text='preferencialmente *.pdf, *.docx ou *.odt')
 
 class ContactForm(forms.Form):
     def __init__(self, *args, **kwargs):

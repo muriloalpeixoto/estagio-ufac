@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
     <h2>Cadastro de Escola</h2>
-    <form>
+    <form action="/cadastro_escola" method="post">
+        {% csrf_token %}
         <label for="nome_esc">Nome da escola</label><br>
         <input type="text" id="nome_esc" name="nome_esc"><br>
         <br>
