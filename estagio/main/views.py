@@ -24,21 +24,54 @@ from estagio.main.forms import ContactForm
 
 def cadastro_escola(request):
     if request.method == "POST":
-        nome_esc = request.POST['nome_esc'];
-        nivel_esc = request.POST['nivel_esc'];
-        tipo_esc = request.POST['tipo_esc'];
-        print("Escola registrada")
-    return render(request, "cadastro_escola.html")
+        nome_esc = request.POST['nome_esc']
+        nivel_esc = request.POST['nivel_esc']
+        tipo_esc = request.POST['tipo_esc']
+        if form.is_valid():
+            print("Escola registrada")
+            #return HttpResponseRedirect('/success/url/')
+    else:
+        return render(request, "estagio/cadastro_escola.html")
 
 def documentos(request):
     if request.method == "POST":
+        nome_est = request.POST['nome_est']
+        nome_esc = request.POST['nome_esc']
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             handle_uploaded_file(request.FILES['file'])
             return HttpResponseRedirect('/success/url/')
     else:
         form = UploadFileForm()
-    return render(request, 'documentos.html', {'form': form})
+    return render(request, 'estagio/documentos.html', {'form': form})
+
+def gera_pdf_view(request):
+    #Bytestream buffer
+    buffer = io.BytesIO()
+    #Canvas
+    canvas = canvas.Canvas(buffer, pagesize=letter, bottomup=0)
+    #Text object
+    textobject = canvas.beginText()
+    textobject.setTextOrigin(inch,inch)
+    textobject.setFont("Helvetica", 14)
+    #Text
+    lines = [
+        "Linha 1",
+        "Linha 2",
+        "Linha 3",
+    ]
+    #Loop
+    for line in lines:
+        textobject.textLine(line)
+    
+    #Finalização
+    canvas.drawText(textobject)
+    canvas.showPage()
+    canvas.save()
+    buffer.seek(0)
+
+    #Retorno
+    return FileResponse(buffer, as_attachment=True, filename="file.pdf")
 
 class ProjectListView(ListView):
     model = Project

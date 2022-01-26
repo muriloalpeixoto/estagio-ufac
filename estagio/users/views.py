@@ -1,12 +1,46 @@
+from pickle import TRUE
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, RedirectView, UpdateView
+from django.http import FileResponse
+import io
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import letter
+
 
 User = get_user_model()
 
+def gera_pdf_view(request):
+    #Bytestream buffer
+    buffer = io.BytesIO()
+    #Canvas
+    canvas = canvas.Canvas(buffer, pagesize=letter, bottomup=0)
+    #Text object
+    textobject = canvas.beginText()
+    textobject.setTextOrigin(inch,inch)
+    textobject.setFont("Helvetica", 14)
+    #Text
+    lines = [
+        "Linha 1",
+        "Linha 2",
+        "Linha 3",
+    ]
+    #Loop
+    for line in lines:
+        textobject.textLine(line)
+    
+    #Finalização
+    canvas.drawText(textobject)
+    canvas.showPage()
+    canvas.save()
+    buffer.seek(0)
+
+    #Retorno
+    return FileResponse(buffer, as_attachment=True, filename="file.pdf")
 
 class UserDetailView(LoginRequiredMixin, DetailView):
 

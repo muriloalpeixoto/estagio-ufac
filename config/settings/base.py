@@ -88,6 +88,7 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "anymail",
 ]
 
 LOCAL_APPS = [
@@ -232,6 +233,9 @@ X_FRAME_OPTIONS = "DENY"
 #    default="django.core.mail.backends.smtp.EmailBackend",
 #)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
+#DEFAULT_FROM_EMAIL = "no-reply@"
+
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-timeout
@@ -280,6 +284,7 @@ ACCOUNT_AUTHENTICATION_METHOD = "username"
 ACCOUNT_EMAIL_REQUIRED = True
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+#ACCOUNT_EMAIL_VERIFICATION = "none"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_ADAPTER = "estagio.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html

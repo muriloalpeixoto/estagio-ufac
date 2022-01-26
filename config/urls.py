@@ -11,7 +11,8 @@ from estagio.main.views import (
     blog_category,
     ContactFormView,
     ProjectListView,
-    ProjectDetailView
+    ProjectDetailView,
+    gera_pdf_view,
 )
 
 urlpatterns = [
@@ -30,6 +31,7 @@ urlpatterns = [
     path("portfolio/", ProjectListView.as_view(), name="portfolio"),
     path("portfolio/<slug:slug>", ProjectDetailView.as_view(), name="project-details"),
     path("contact/", ContactFormView.as_view(), name="contact"),
+    path("gera_pdf", gera_pdf_view.as_view(), name="gera_pdf"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
