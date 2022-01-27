@@ -241,6 +241,12 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-timeout
 EMAIL_TIMEOUT = 5
 
+EMAIL_HOST = 'smtp.elasticemail.com'
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = 'alfonso.peixoto@gmail.com'
+EMAIL_HOST_PASSWORD = 'os.environ["elasticmailpassword"]'
+EMAIL_USE_TLS = True
+
 # ADMIN
 # ------------------------------------------------------------------------------
 # Django Admin URL.

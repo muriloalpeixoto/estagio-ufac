@@ -27,10 +27,11 @@ def cadastro_escola(request):
         nome_esc = request.POST['nome_esc']
         nivel_esc = request.POST['nivel_esc']
         tipo_esc = request.POST['tipo_esc']
-        if form.is_valid():
-            print("Escola registrada")
-            #return HttpResponseRedirect('/success/url/')
-    else:
+        return HttpResponseRedirect('/cadastro_escola/')
+        #if form.is_valid():
+            #print("Escola registrada")
+            #return HttpResponseRedirect('/cadastro_escola/')
+    #else:
         return render(request, "estagio/cadastro_escola.html")
 
 def documentos(request):

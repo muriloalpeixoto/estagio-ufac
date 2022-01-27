@@ -7,6 +7,12 @@ class UploadFileForm(forms.Form):
     file = forms.FileField(label='Selecione um arquivo',
     help_text='preferencialmente *.pdf, *.docx ou *.odt')
 
+class UploadFileForm(forms.Form):
+    your_name = forms.CharField(label='Your name', max_length=100)
+    nome_esc = forms.CharField(label='Your name', max_length=100)
+    nivel_esc = forms.CharField(label='Your name', max_length=100)
+    tipo_esc = forms.CharField(label='tipo_esc', max_length=100)
+
 class ContactForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)

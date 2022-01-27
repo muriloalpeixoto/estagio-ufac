@@ -2,7 +2,8 @@
 {% block content %}
     <h2>Documentos do Estágio</h2>
     <!--{% url 'documentos' %}-->
-    <form action="{% url 'documentos' %}" method="POST">
+    <!--<form action="{% url 'documentos' %}" method="POST">-->
+    <form>
         {% csrf_token %}
         <label for="nome_est">Nome do estagiário</label><br>
         <input type="text" id="nome_est" name="nome_est"><br>

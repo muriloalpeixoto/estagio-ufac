@@ -14,8 +14,8 @@ class UserAdmin(auth_admin.UserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
     fieldsets = (
-        (None, {"fields": ("username", "password", "tipo")}),
-        (_("Personal info"), {"fields": ("name", "email")}),
+        (None, {"fields": ("username", "password")}),
+        (_("Personal info"), {"fields": ("name", "email", "tipo")}),
         (
             _("Permissions"),
             {
